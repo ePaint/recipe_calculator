@@ -1,0 +1,40 @@
+{% extends request.base_template %}
+{% load static %}
+{% block content %}
+<div class="row text-center mx-auto gap-2">
+    <h1 class="mb-4">Recetas</h1>
+    <div class="row g-4">
+        <div class="col">
+            <div class="card h-100 resize-hover bg-success-subtle">
+                <div class="card-body">
+                    <h5 class="card-title">Create Ingredient</h5>
+                    <p class="card-text">
+                        <a href="{% url 'recipes-recipe-ingredient-create' %}"
+                           hx-get="{% url 'recipes-recipe-ingredient-create' %}"
+                           class="btn btn-success">
+                            <img src="{% static 'layout/plus.svg' %}" alt="plus" width="48" height="48"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 resize-hover bg-success-subtle">
+                <div class="card-body">
+                    <h5 class="card-title">Create Recipe</h5>
+                    <p class="card-text">
+                        <a href="{% url 'recipes-recipe-create' %}"
+                           hx-get="{% url 'recipes-recipe-create' %}"
+                           class="btn btn-success">
+                            <img src="{% static 'layout/plus.svg' %}" alt="plus" width="48" height="48"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for recipe in recipes %}
+        {% include 'recipes/partials/recipe_line_item.html' with recipe=recipe %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

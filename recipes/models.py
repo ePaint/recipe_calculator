@@ -42,7 +42,7 @@ class Recipe(models.Model):
     address = models.URLField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="recipes/", blank=True, null=True)
-    price = models.IntegerField()
+    price = models.IntegerField(blank=True, null=True)
     quantity = models.IntegerField()
     unit = models.CharField(max_length=6, choices=UNITS, default=UNITS.g)
     ingredients = models.ManyToManyField(
@@ -53,13 +53,14 @@ class Recipe(models.Model):
     )
 
     def __str__(self):
+        return self.title
         return (f"{self.title} - "
                 f"{self.quantity} {self.unit} - "
                 f"{self.get_price()} - "
                 f"{self.get_unit_price()}")
 
     def get_price(self):
-        return f"€{self.price / 100:.2f}"
+        return f"€{self.price / 100:.2f}" if self.price else "Free"
 
     def get_unit_type(self):
         if self.unit in WEIGHT_UNITS:

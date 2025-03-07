@@ -6,6 +6,7 @@ from recipe_calculator import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("recipes/", include("recipes.urls")),
     path("", include("layout.urls")),
 ]
 

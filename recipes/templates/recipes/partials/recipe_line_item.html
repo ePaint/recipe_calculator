@@ -1,0 +1,31 @@
+{% load static %}
+<div class="col" id="recipe-{{ recipe.pk }}">
+    <div class="card h-100 resize-hover">
+        <div class="card-body">
+            <h5 class="card-title">{{ recipe.title }}</h5>
+            <p class="card-text">
+                <span class="badge bg-primary">{{ recipe.brand | default_if_none:"Sin marca" }}</span>
+            </p>
+            <p class="card-text"></p>
+            <p class="card-text">
+                        <span class="badge bg-success-subtle text-light-emphasis">
+                            {{ recipe.get_price }}
+                        </span>
+                <span class="badge bg-primary-subtle text-light-emphasis">
+                            {{ recipe.quantity }} {{ recipe.unit }}
+                        </span>
+            </p>
+            <p class="card-text">{{ recipe.description | default_if_none:"" }}</p>
+            <form method="post"
+                  hx-post="{% url 'recipes-recipe-delete' recipe.pk %}"
+                  hx-trigger="submit"
+                  hx-push-url="false"
+                  hx-swap="outerHTML"
+                  hx-target="#recipe-{{ recipe.pk }}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">
+                    <img src="{% static 'layout/trash.svg' %}" alt="trash" width="24" height="24">
+                </button>
+        </div>
+    </div>
+</div>
