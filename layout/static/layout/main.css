@@ -1,0 +1,28 @@
+body {
+    font-family: "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
+}
+
+.star {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) saturate(100%) invert(79%) sepia(72%) saturate(2131%) hue-rotate(3deg) brightness(104%) contrast(113%);
+}
+
+.like, .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.liked {
+    filter: brightness(0) saturate(100%) invert(49%) sepia(83%) saturate(476%) hue-rotate(199deg) brightness(102%) contrast(101%);
+}
+
+b {
+    font-weight: 1000 !important;
+}
+
+circle {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+}

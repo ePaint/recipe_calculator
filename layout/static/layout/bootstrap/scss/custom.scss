@@ -1,0 +1,12 @@
+// Override Bootstrap theme colors
+$primary: #5293de;
+$secondary: #1DC4DE;
+$success: #6CA754;
+$info: #D9D6C5;
+$warning: #FEBD2B;
+$danger: #FF5E52;
+$light: #f8f9fa;
+$dark: #343a40;
+
+// Import Bootstrap
+@import "source/bootstrap";
