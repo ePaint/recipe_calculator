@@ -3,8 +3,11 @@
 {% block content %}
 <div class="row text-center mx-auto gap-4">
     <h1>Bienvenido</h1>
-    <a >
-        <img src="{% static 'layout/logo.svg' %}" alt="logo" width="300" height="300" class="mb-3">
-    </a>
+    <div>
+        <a href="{% url 'layout-home' %}"
+           hx-get="{% url 'layout-home' %}">
+            <img src="{% static 'layout/logo.svg' %}" alt="logo" width="300" height="300" class="mb-3 resize-hover">
+        </a>
+    </div>
 </div>
 {% endblock %}
